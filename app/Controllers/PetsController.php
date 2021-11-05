@@ -23,7 +23,7 @@ class PetsController extends BaseController
         $data = [
             'title' => 'Master Pets',
             'pets' => $this->petsModel->getPets(10, 'pets'),
-            'roles' => $this->getRoles(),
+            'owners' => $this->getOwners(),
             'pager' => $this->petsModel->pager,
         ];
 

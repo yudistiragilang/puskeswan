@@ -50,10 +50,10 @@
 
             <br>
             <div class="col-md-6">
-                <select class="simple-select2 w-100" id="role" name="role">
+                <select class="simple-select2 w-100" id="owner" name="owner">
                     <option>Choose role</option>
-                    <?php foreach ($roles->getResult() as $role) : ?>
-                        <option value="<?= $role->id; ?>"><?= $role->role; ?></option>
+                    <?php foreach ($owners->getResult() as $owner) : ?>
+                        <option value="<?= $owner->nik; ?>"><?= $role->owner_name; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

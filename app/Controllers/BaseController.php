@@ -93,4 +93,13 @@ class BaseController extends Controller
 		$query   = $builder->get();
 		return $query;
 	}
+
+	public function getOwners()
+	{
+		$db		= \Config\Database::connect();
+		$builder = $db->table('owners');
+		$builder->select('nik, owner_name');
+		$query   = $builder->get();
+		return $query;
+	}
 }
