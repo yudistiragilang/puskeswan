@@ -14,92 +14,102 @@ namespace App\Controllers;
  *
  * @package CodeIgniter
  */
-
 use CodeIgniter\Controller;
 
-class BaseController extends Controller
-{
+class BaseController extends Controller {
 
-	/**
-	 * An array of helpers to be loaded automatically upon
-	 * class instantiation. These helpers will be available
-	 * to all other controllers that extend BaseController.
-	 *
-	 * @var array
-	 */
-	protected $helpers = [];
+    /**
+     * An array of helpers to be loaded automatically upon
+     * class instantiation. These helpers will be available
+     * to all other controllers that extend BaseController.
+     *
+     * @var array
+     */
+    protected $helpers = [];
 
-	/**
-	 * Constructor.
-	 */
-	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
-	{
-		// Do Not Edit This Line
-		parent::initController($request, $response, $logger);
+    /**
+     * Constructor.
+     */
+    public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger) {
+	// Do Not Edit This Line
+	parent::initController($request, $response, $logger);
 
-		//--------------------------------------------------------------------
-		// Preload any models, libraries, etc, here.
-		//--------------------------------------------------------------------
-		// E.g.:
-		// $this->session = \Config\Services::session();
+	//--------------------------------------------------------------------
+	// Preload any models, libraries, etc, here.
+	//--------------------------------------------------------------------
+	// E.g.:
+	// $this->session = \Config\Services::session();
+    }
+
+    public function cekEmailAvailable($email) {
+	$db = \Config\Database::connect();
+	$builder = $db->table('accounts');
+	$select = $builder->select('email');
+	$where = $select->where('email', $email);
+	$hasil = $where->countAllResults();
+
+	if ($hasil > 0) {
+	    return true;
+	} else {
+	    return false;
+	}
+    }
+
+    public function cekNikAvailable($nik, $type_user) {
+
+	if ($type_user == ST_OWNERS) {
+	    $table = 'owners';
+	} elseif ($type_user == ST_DOCTORS) {
+	    $table = 'doctors';
+	} elseif ($type_user == ST_NURSES) {
+	    $table = 'nurses';
+	} elseif ($type_user == ST_STAFFS) {
+	    $table = 'staffs';
 	}
 
-	public function cekEmailAvailable($email)
-	{
-		$db		= \Config\Database::connect();
-		$builder = $db->table('accounts');
-		$select	= $builder->select('email');
-		$where = $select->where('email', $email);
-		$hasil	= $where->countAllResults();
+	$db = \Config\Database::connect();
+	$builder = $db->table($table);
+	$select = $builder->select('nik');
+	$where = $select->where('nik', $nik);
+	$hasil = $where->countAllResults();
 
-		if ($hasil > 0) {
-			return true;
-		} else {
-			return false;
-		}
+	if ($hasil > 0) {
+	    return true;
+	} else {
+	    return false;
 	}
+    }
 
-	public function cekNikAvailable($nik, $type_user)
-	{
+    public function getRoles() {
+	$db = \Config\Database::connect();
+	$builder = $db->table('roles');
+	$builder->select('id, role');
+	$query = $builder->get();
+	return $query;
+    }
 
-		if ($type_user == ST_OWNERS) {
-			$table = 'owners';
-		} elseif ($type_user == ST_DOCTORS) {
-			$table = 'doctors';
-		} elseif ($type_user == ST_NURSES) {
-			$table = 'nurses';
-		} elseif ($type_user == ST_STAFFS) {
-			$table = 'staffs';
-		}
+    public function getOwners() {
+	$db = \Config\Database::connect();
+	$builder = $db->table('owners');
+	$builder->select('nik, owner_name');
+	$query = $builder->get();
+	return $query;
+    }
 
-		$db		= \Config\Database::connect();
-		$builder = $db->table($table);
-		$select	= $builder->select('nik');
-		$where = $select->where('nik', $nik);
-		$hasil	= $where->countAllResults();
+    public function getPetTypes() {
+	$db = \Config\Database::connect();
+	$builder = $db->table('pet_types');
+	$builder->select('id, description');
+	$query = $builder->get();
+	return $query;
+    }
 
-		if ($hasil > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    public function getBreeds() {
+	$db = \Config\Database::connect();
+	$builder = $db->table('breeds');
+	$builder->select('id, breed');
+	$query = $builder->get();
+	return $query;
+    }
 
-	public function getRoles()
-	{
-		$db		= \Config\Database::connect();
-		$builder = $db->table('roles');
-		$builder->select('id, role');
-		$query   = $builder->get();
-		return $query;
-	}
-
-	public function getOwners()
-	{
-		$db		= \Config\Database::connect();
-		$builder = $db->table('owners');
-		$builder->select('nik, owner_name');
-		$query   = $builder->get();
-		return $query;
-	}
 }

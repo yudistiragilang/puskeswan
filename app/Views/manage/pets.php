@@ -101,14 +101,28 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="own_name" class="form-control form-control-user" id="own_name" value="<?= old('own_name'); ?>" placeholder="Owner name">
-                    </div>
-
-                    <div class="form-group">
-                        <select class="simple-select2" id="owner" name="owner">
+                        <select class="simple-select2" id="own_name" name="own_name">
                             <option>Choose Owners</option>
                             <?php foreach ($owners->getResult() as $owner) : ?>
-                                <option value="<?= $owner->nik; ?>"><?= $owner->owner_name; ?></option>
+                                <option value="<?= $owner->nik; ?>"><?= $owner->nik." | ".$owner->owner_name; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+		    
+		    <div class="form-group">
+                        <select class="simple-select2" id="pet_type" name="pet_type">
+                            <option>Choose Pet types</option>
+                            <?php foreach ($pet_types->getResult() as $pet_type) : ?>
+                                <option value="<?= $pet_type->id; ?>"><?= $pet_type->description; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+		    
+		    <div class="form-group">
+                        <select class="simple-select2" id="breed" name="breed">
+                            <option>Choose Breeds</option>
+                            <?php foreach ($breeds->getResult() as $breed) : ?>
+                                <option value="<?= $breed->id; ?>"><?= $breed->breed; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
