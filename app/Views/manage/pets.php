@@ -59,6 +59,8 @@
                                     <th>#</th>
                                     <th>Pet name</th>
                                     <th>Pet owner</th>
+                                    <th>Pet type</th>
+                                    <th>Breed</th>
                                     <th>Gander</th>
                                     <th>Action</th>
                                 </tr>
@@ -68,7 +70,9 @@
                                     <tr>
                                         <th scope="row"><?= $x['id']; ?></th>
                                         <td><?= $x['pets_name']; ?></td>
-                                        <td><?= $x['pets_owner']; ?></td>
+                                        <td><?= $x['owner_name']; ?></td>
+                                        <td><?= $x['type']; ?></td>
+                                        <td><?= $x['breed']; ?></td>
                                         <td><?= $x['gander'] == 1 ? "Jantan" : "Betina"; ?></td>
                                         <td>
                                             <a class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate<?= $x['id']; ?>"><i class="fas fa-fw fa-edit"></i></a>
@@ -104,12 +108,12 @@
                         <select class="simple-select2" id="own_name" name="own_name">
                             <option>Choose Owners</option>
                             <?php foreach ($owners->getResult() as $owner) : ?>
-                                <option value="<?= $owner->nik; ?>"><?= $owner->nik." | ".$owner->owner_name; ?></option>
+                                <option value="<?= $owner->nik; ?>"><?= $owner->nik . " | " . $owner->owner_name; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-		    
-		    <div class="form-group">
+
+                    <div class="form-group">
                         <select class="simple-select2" id="pet_type" name="pet_type">
                             <option>Choose Pet types</option>
                             <?php foreach ($pet_types->getResult() as $pet_type) : ?>
@@ -117,8 +121,8 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-		    
-		    <div class="form-group">
+
+                    <div class="form-group">
                         <select class="simple-select2" id="breed" name="breed">
                             <option>Choose Breeds</option>
                             <?php foreach ($breeds->getResult() as $breed) : ?>
@@ -159,7 +163,7 @@
                             <input type="text" value="<?= $x['id']; ?>" name="id_pet" hidden>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="own_name" class="form-control form-control-user" id="own_name" value="<?= $x['pets_owner']; ?>">
+                            <input type="text" name="own_name" class="form-control form-control-user" id="own_name" value="<?= $x['owner_name']; ?>">
                         </div>
                         <div class="form-group">
                             <select class="form-control" id="gander" name="gander">

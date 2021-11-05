@@ -12,7 +12,13 @@ class PetsModel extends Model
     public function getPets($pager = null, $pager_grup = null)
     {
         if ($pager != null) {
-            return $this->where('deleted_at is null', null, false)->paginate($pager, $pager_grup);
+            $builder = $this->select('pets.id, pets.pets_name, z.owner_name, pets.gander, x.description AS type, c.breed');
+            $builder->join('owners AS z', 'z.nik=pets.pets_owner');
+            $builder->join('pet_types AS x', 'x.id=pets.pet_type');
+            $builder->join('breeds AS c', 'c.id=pets.breed');
+            $builder->where('pets.deleted_at is null', null, false);
+            $result = $builder->paginate($pager, $pager_grup);
+            return $result;
         } else {
             return $this->findAll();
         }
