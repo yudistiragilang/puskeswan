@@ -53,7 +53,7 @@
                 <select class="simple-select2 w-100" id="owner" name="owner">
                     <option>Choose role</option>
                     <?php foreach ($owners->getResult() as $owner) : ?>
-                        <option value="<?= $owner->nik; ?>"><?= $role->owner_name; ?></option>
+                        <option value="<?= $owner->nik; ?>"><?= $owner->owner_name; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
