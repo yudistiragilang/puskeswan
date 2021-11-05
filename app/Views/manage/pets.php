@@ -49,15 +49,6 @@
             </div>
 
             <br>
-            <div class="col-md-6">
-                <select class="simple-select2 w-100" id="owner" name="owner">
-                    <option>Choose Owners</option>
-                    <?php foreach ($owners->getResult() as $owner) : ?>
-                        <option value="<?= $owner->nik; ?>"><?= $owner->owner_name; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <br>
 
             <div class="row">
                 <div class="col-md-12">
@@ -96,7 +87,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="modalInputLabel" aria-hidden="true">
+<div class="modal fade" id="modalInput" aria-labelledby="modalInputLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -114,7 +105,7 @@
                     </div>
 
                     <div class="form-group">
-                        <select class="simple-select2 w-100" id="owner" name="owner">
+                        <select class="simple-select2" id="owner" name="owner">
                             <option>Choose Owners</option>
                             <?php foreach ($owners->getResult() as $owner) : ?>
                                 <option value="<?= $owner->nik; ?>"><?= $owner->owner_name; ?></option>
