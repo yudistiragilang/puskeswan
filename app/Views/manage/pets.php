@@ -51,7 +51,7 @@
             <br>
             <div class="col-md-6">
                 <select class="simple-select2 w-100" id="owner" name="owner">
-                    <option>Choose role</option>
+                    <option>Choose Owners</option>
                     <?php foreach ($owners->getResult() as $owner) : ?>
                         <option value="<?= $owner->nik; ?>"><?= $owner->owner_name; ?></option>
                     <?php endforeach; ?>
@@ -111,6 +111,15 @@
 
                     <div class="form-group">
                         <input type="text" name="own_name" class="form-control form-control-user" id="own_name" value="<?= old('own_name'); ?>" placeholder="Owner name">
+                    </div>
+
+                    <div class="form-group">
+                        <select class="simple-select2 w-100" id="owner" name="owner">
+                            <option>Choose Owners</option>
+                            <?php foreach ($owners->getResult() as $owner) : ?>
+                                <option value="<?= $owner->nik; ?>"><?= $owner->owner_name; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="form-group">
