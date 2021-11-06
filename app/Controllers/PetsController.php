@@ -110,6 +110,18 @@ class PetsController extends BaseController
 					'required' => 'Own name cannot be empty !'
 				]
 			],
+			'pet_type' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Pet type cannot be empty !'
+				]
+			],
+			'breed' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Breed cannot be empty !'
+				]
+			],
 			'gander' => [
 				'rules' => 'required',
 				'errors' => [
@@ -124,6 +136,8 @@ class PetsController extends BaseController
 			$data = array(
 				'pets_name' => $this->request->getVar('pets_name'),
 				'pets_owner' => $this->request->getVar('own_name'),
+				'pet_type' => $this->request->getVar('pet_type'),
+				'breed' => $this->request->getVar('breed'),
 				'gander' => $this->request->getVar('gander'),
 				'updated_at' => date('Y-m-d H:i:s'),
 			);

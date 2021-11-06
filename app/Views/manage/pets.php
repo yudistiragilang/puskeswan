@@ -72,7 +72,7 @@
                                         <td><?= $x['pets_name']; ?></td>
                                         <td><?= $x['owner_name']; ?></td>
                                         <td><?= $x['type']; ?></td>
-                                        <td><?= $x['breed']; ?></td>
+                                        <td><?= $x['breed_desc']; ?></td>
                                         <td><?= $x['gander'] == 1 ? "Jantan" : "Betina"; ?></td>
                                         <td>
                                             <a class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate<?= $x['id']; ?>"><i class="fas fa-fw fa-edit"></i></a>
@@ -162,9 +162,34 @@
                             <input type="text" name="pets_name" class="form-control form-control-user" id="pets_name" value="<?= $x['pets_name']; ?>">
                             <input type="text" value="<?= $x['id']; ?>" name="id_pet" hidden>
                         </div>
+
                         <div class="form-group">
-                            <input type="text" name="own_name" class="form-control form-control-user" id="own_name" value="<?= $x['owner_name']; ?>">
+                            <select class="simple-select2" id="own_name" name="own_name">
+                                <option>Choose Owners</option>
+                                <?php foreach ($owners->getResult() as $owner) : ?>
+                                    <option value="<?= $owner->nik; ?>" <?= $owner->nik == $x['pets_owner'] ? "selected" : ""; ?>><?= $owner->nik . " | " . $owner->owner_name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
+
+                        <div class="form-group">
+                            <select class="simple-select2" id="pet_type" name="pet_type">
+                                <option>Choose Pet types</option>
+                                <?php foreach ($pet_types->getResult() as $pet_type) : ?>
+                                    <option value="<?= $pet_type->id; ?>" <?= $pet_type->id == $x['pet_type'] ? "selected" : ""; ?>><?= $pet_type->description; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="simple-select2" id="breed" name="breed">
+                                <option>Choose Breeds</option>
+                                <?php foreach ($breeds->getResult() as $breed) : ?>
+                                    <option value="<?= $breed->id; ?>" <?= $breed->id == $x['breed'] ? "selected" : ""; ?>><?= $breed->breed; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <select class="form-control" id="gander" name="gander">
                                 <option>Choose gander</option>

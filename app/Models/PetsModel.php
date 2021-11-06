@@ -12,7 +12,7 @@ class PetsModel extends Model
     public function getPets($pager = null, $pager_grup = null)
     {
         if ($pager != null) {
-            $builder = $this->select('pets.id, pets.pets_name, z.owner_name, pets.gander, x.description AS type, c.breed');
+            $builder = $this->select('pets.id, pets.pets_name, pets.pets_owner, z.owner_name, pets.pet_type, pets.gander, x.description AS type, pets.breed, c.breed AS breed_desc');
             $builder->join('owners AS z', 'z.nik=pets.pets_owner');
             $builder->join('pet_types AS x', 'x.id=pets.pet_type');
             $builder->join('breeds AS c', 'c.id=pets.breed');
