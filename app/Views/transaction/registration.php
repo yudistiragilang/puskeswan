@@ -11,11 +11,54 @@
 
             <br>
 
-            <div class="row">
-                <div class="col-md-12">
-
+            <form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <tr>
+                                <td>Owner</td>
+                                <td> : </td>
+                                <td>
+                                    <select class="simple-select2" id="own_name" name="own_name">
+                                        <option>Choose Owner</option>
+                                        <?php foreach ($owners->getResult() as $owner) : ?>
+                                            <option value="<?= $owner->nik; ?>"><?= $owner->nik . " | " . $owner->owner_name; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td> </td>
+                                <td>Date</td>
+                                <td> : </td>
+                                <td colspan="2"><input type="date" name="trans_date" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td>Pet</td>
+                                <td> : </td>
+                                <td>
+                                    <select class="simple-select2" id="own_name" name="own_name">
+                                        <option>Choose Pet</option>
+                                        <?php foreach ($pets->getResult() as $pet) : ?>
+                                            <option value="<?= $pet->id; ?>"><?= $pet->pets_name; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td> </td>
+                                <td>Rawat Inap</td>
+                                <td> : </td>
+                                <td>
+                                    <input class="form-check-input" type="radio" name="inap" value="1">
+                                    <label>Yes</label>
+                                </td>
+                                <td>
+                                    <input class="form-check-input" type="radio" name="inap" value="0" checked>
+                                    <label>No</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </form>
+
         </div>
     </div>
 </div>

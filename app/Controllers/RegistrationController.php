@@ -25,6 +25,7 @@ class RegistrationController extends BaseController
         $data = [
             'title' => 'Check Registration',
             'owners' => $this->getOwners(),
+            'pets' => $this->getPets(),
         ];
 
         return view('transaction/registration', $data);
