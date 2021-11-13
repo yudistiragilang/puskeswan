@@ -74,13 +74,12 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTrans" aria-expanded="true" aria-controls="collapseTrans">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Periksa</span>
+            <span>Check Health</span>
         </a>
         <div id="collapseTrans" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Setup</h6>
-                <a class="collapse-item" href="<?= base_url('/manage/roles'); ?>">Roles</a>
-                <a class="collapse-item" href="<?= base_url('/manage/accounts'); ?>">Accounts</a>
+                <a class="collapse-item" href="<?= base_url('/transaction/registration'); ?>">Registration</a>
             </div>
         </div>
     </li>

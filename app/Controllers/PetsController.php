@@ -50,6 +50,12 @@ class PetsController extends BaseController
 					'required' => 'Own name cannot be empty !'
 				]
 			],
+			'dob' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Date of Bird cannot be empty !'
+				]
+			],
 			'pet_type' => [
 				'rules' => 'required',
 				'errors' => [
@@ -79,6 +85,7 @@ class PetsController extends BaseController
 				'pet_type' => $this->request->getVar('pet_type'),
 				'breed' => $this->request->getVar('breed'),
 				'gander' => $this->request->getVar('gander'),
+				'dob' => $this->request->getVar('dob'),
 				'created_at' => date('Y-m-d H:i:s'),
 			);
 
@@ -110,6 +117,12 @@ class PetsController extends BaseController
 					'required' => 'Own name cannot be empty !'
 				]
 			],
+			'dob' => [
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Date of Bird cannot be empty !'
+				]
+			],
 			'pet_type' => [
 				'rules' => 'required',
 				'errors' => [
@@ -139,6 +152,7 @@ class PetsController extends BaseController
 				'pet_type' => $this->request->getVar('pet_type'),
 				'breed' => $this->request->getVar('breed'),
 				'gander' => $this->request->getVar('gander'),
+				'dob' => $this->request->getVar('dob'),
 				'updated_at' => date('Y-m-d H:i:s'),
 			);
 
@@ -172,5 +186,10 @@ class PetsController extends BaseController
 			unset($_POST);
 			return redirect()->back()->withInput();
 		}
+	}
+
+	public function tes()
+	{
+		return "cek 123";
 	}
 }

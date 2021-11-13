@@ -62,6 +62,7 @@
                                     <th>Pet type</th>
                                     <th>Breed</th>
                                     <th>Gander</th>
+                                    <th>Date of Bird</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -74,6 +75,7 @@
                                         <td><?= $x['type']; ?></td>
                                         <td><?= $x['breed_desc']; ?></td>
                                         <td><?= $x['gander'] == 1 ? "Jantan" : "Betina"; ?></td>
+                                        <td><?= $x['dob']; ?></td>
                                         <td>
                                             <a class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate<?= $x['id']; ?>"><i class="fas fa-fw fa-edit"></i></a>
                                             <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete<?= $x['id']; ?>"><i class="fas fa-fw fa-trash-alt"></i></a>
@@ -138,6 +140,17 @@
                             <option value="2">Betina</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Date of Bird</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" name="dob" class="form-control form-control-user" id="dob" value="<?= old('dob'); ?>" placeholder="Date of Bird">
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -197,6 +210,18 @@
                                 <option value="2" <?= $x['gander'] == 2 ? "selected" : ""; ?>>Betina</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Date of Bird</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" name="dob" class="form-control form-control-user" id="dob" value="<?= $x['dob']; ?>">
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

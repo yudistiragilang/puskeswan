@@ -51,6 +51,9 @@ $routes->get('/manage/tools', 'ToolsController::index');
 $routes->get('/manage/diseases', 'DiseasesController::index');
 $routes->get('/manage/rooms', 'RoomsController::index');
 
+$routes->get('/transaction/registration', 'RegistrationController::index');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
